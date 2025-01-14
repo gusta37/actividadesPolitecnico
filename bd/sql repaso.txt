@@ -1,0 +1,148 @@
+sql:
+
+DLL --> definición de datos:es una parte fundamental. Permite crear, modificar y eliminar entidades y objetos en la base de datos. Las sentencias DDL más utilizadas incluyen CREATE, ALTER, DROP, TRUNCATE, COMMENT, GRANT y REVOKE.
+
+CREATE --> CREA ENTIDADES
+ALTER --> modifica ej ALTER TABLE usuarios ADD COLUMN telefono VARCHAR(20);
+DROP --> borra
+TRUNCATE --> ELIMINA TODOS LOS ELEMENTOS DE UNA TABLA
+COMMENT --> AGREGA COMENTARIO
+GRANT --> PERMISO A LOS USUARIOS EJ "GRANT SELECT, INSERT, UPDATE ON usuarios TO jane;"
+REVOKE -> QUITA PERMISOS.
+
+DML --> MANIPULACION DE LOS DATOS --> LEER DATOS O CREA REGISTROS
+
+Permite a los usuarios acceder y manipular los datos almacenados en una base de datos. Se utiliza para realizar operaciones de lectura, inserción,
+actualización y eliminación de registros en las tablas de la base de datos.
+
+Sentencias más utilizadas en DML:
+
+LECTURA:
+
+SELECT --> RECUPERA DATOS --> EJ SELECT * FROM clientes;
+           SELECT nombre, email FROM clientes; (CAMPO ESPECIFICO)
+           SELECT SUM(monto) FROM ventas;(FUNCION)
+WHERE --> SE COMBINARLA CON SELECT PARA BUSQUEDAS MAS ESPECIFICAS. EJ "SELECT * FROM clientes WHERE apellido = ‘Garcia’';" (SOLO TRAE LOS GARCIAS DE TABLA CLIENTE)
+
+ALTERACION:
+
+INSERT --> AGREGA NUEVOS REGISTROS. EJ "INSERT INTO clientes (nombre, apellido, edad) VALUES ('Juan', 'Pérez', 30);"
+UPDATE --> MODIFICA DATOS EJ "UPDATE clientes SET edad = 35 WHERE id = 123;
+"
+DELETE --> ELIMINA REGISTROS EJ "DELETE FROM clientes WHERE id = 123;
+"
+
+CONSULTAS MULTI-TABLA:
+
+CONSULTA DE DOS TABLAS A LA VEZ USANDO WHERE:
+"SELECT clientes.nombre, ordenes.fecha
+FROM clientes, ordenes
+WHERE clientes.id = ordenes.cliente_id;"
+
+OTRO EJ CON MAS OPCIONES:
+
+"SELECT productos.nombre, detalles_orden.cantidad
+FROM clientes, ordenes, detalles_orden, productos
+WHERE clientes.id = ordenes.cliente_id
+AND ordenes.id = detalles_orden.orden_id
+AND detalles_orden.producto_id = productos.id
+AND clientes.nombre = 'Juan';"
+
+WHERE NO ES TAN CLARA, POR ESO USAMOS JOIN.
+
+JOIN --> nos permite unir dos o más tablas en una sola consulta.
+ON -->  especifica las condiciones de unión entre las tablas.
+
+INNER JOIN --> coincidencias en ambas tablas
+
+ej:
+
+"
+SELECT *
+FROM clientes
+INNER JOIN pedidos
+ON clientes.id = pedidos.cliente_id;" (busca pedidos de ambas tablas)
+
+LEFT JOIN -->  devuelve todos los registros de la primer tabla y todas las coincidencias de la segunda.
+
+ej: 
+"SELECT *
+FROM clientes
+LEFT JOIN pedidos
+ON clientes.id = pedidos.cliente_id;"
+
+RIGHT JOIN -->  similar al LEFT JOIN: devuelve todos los registros de la tabla de la derecha y los registros que tienen coincidencias en la tabla de la izquierda.
+
+ej:
+"SELECT *
+FROM clientes
+RIGHT JOIN pedidos
+ON clientes.id = pedidos.cliente_id;"
+
+GROUP BY -->  agrupa las filas que tienen el mismo valor en una o más columnas y aplicar una función agregada. 
+
+ej:
+"SELECT column1, SUM(column2)
+FROM table_name
+WHERE condition
+GROUP BY column1;" (BUSCA CUANTOS HAY DE CADA UNO Y SUMA SUS CANTIDADES.)
+
+También podemos utilizar el comando GROUP BY con funciones agregadas como
+COUNT, AVG, MIN, MAX.
+
+COUNT() te dice cuántos hay.
+AVG() te dice cuánto vale en promedio.
+MIN() te dice cuál es el más pequeño.
+MAX() te dice cuál es el más grande.
+
+ORDER BY --> para ordenar los resultados en un orden específico. Una o varias columnas y en orden ascendente o descendente.
+
+EJ:
+
+"SELECT columna1, columna2, columna3
+FROM tabla
+ORDER BY columna1 ASC/DESC, columna2 ASC/DESC, ...;"
+
+Subconsultas --> son consultas anidadas dentro de otra consulta. Se pueden utilizar para realizar operaciones complejas en una sola consulta.
+Existen dos tipos: ESCALARES Y DE VARIAS COLUMNAS.
+
+EJ:
+"SELECT columna1, columna2, ... FROM tabla1 WHERE columnaX OPERADOR
+(SELECT columnaY FROM tabla2 WHERE condicion);" (SUBCONSULTA)
+
+ESCALARES --> devuelven un solo valor, y se utilizan en la cláusula SELECT, WHERE o HAVING. 
+
+EJ:
+"SELECT nombre, apellido, (SELECT COUNT(*) FROM pedidos WHERE cliente_id =
+clientes.id) AS cantidad_pedidos FROM clientes;" (CUENTA LOS PEDIDOS DE LOS CLIENTES Y LO MUESTRA EN UNA NUEVA COLUMNA LLAMADA CANTIDAD_PEDIDOS)
+
+DE VARIAS COLUMNAS --> devuelven varias columnas y se utilizan en la cláusula FROM o JOIN. 
+
+EJ:
+"SELECT c.nombre, p.descripcion FROM clientes c, (SELECT * FROM pedidos
+WHERE fecha = '2022-01-01') p WHERE c.id = p.cliente_id;"
+
+También es posible utilizar operadores como IN o EXISTS
+
+IN --> Se utiliza para comprobar si un valor específico se encuentra dentro de una lista de valores o en el resultado de una subconsulta.
+
+Ej:
+"SELECT * FROM clientes
+WHERE ciudad IN ('Madrid', 'Barcelona', 'Valencia');"
+
+Esta consulta seleccionará todos los clientes que viven en Madrid, Barcelona o Valencia.
+
+EXISTS --> Se utiliza para verificar si una subconsulta devuelve al menos un registro. Es decir, si existe al menos un valor que cumple la condición de la subconsulta.
+
+Ej:
+"SELECT * FROM pedidos
+WHERE EXISTS (
+    SELECT 1 FROM productos
+    WHERE pedidos.producto_id = productos.id
+    AND productos.categoria = 'Electrónica'
+);
+Esta consulta seleccionará todos los pedidos que incluyen al menos un producto de la categoría "Electrónica".
+
+
+
+
