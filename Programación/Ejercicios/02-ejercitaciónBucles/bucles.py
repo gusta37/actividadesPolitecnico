@@ -59,79 +59,75 @@ print(f'Los números menores a 100 son: {menorCienList} y son {menorCien} númer
 print(f'El número Máximo es {maximo} y el número mínimo es {minimo}.')'''
 
 
-#3. Ingresar las edades y el sexo de 15 personas y determinar cuántas son mujeres, cuántos varones, cuántos mayorEdad de edad y cuántos menorEdad de edad.
+#Ejercicios estructuras repetitivas y estructuras condicionales.
+'''#3. Ingresar las edades y el sexo de 15 personas y determinar cuántas son mujeres, 
+cuántos varones, cuántos mayores de edad y cuántos menores de edad.
+personas = []
 
-"""# Inicializar contadores
+# contadores:
+hombres = 0
 mujeres = 0
-varones = 0
-mayorEdad = 0
-menorEdad = 0
+mayores = 0 
+menores = 0
 
-# Leer datos para 15 personas
-for i in range(1, 16):  # Desde 1 hasta 15
-    print(f"\nPersona {i}:")
+for i in range (1, 5):
+    edad = int(input(f'Ingresá la edad de la persona {i}: '))
     
-    # Pedir la edad
-    edad = int(input("Ingrese la edad: "))
-    
-    # Pedir el sexo y validar
+    # Validación del sexo. Uso While pq me permite volver a pedir el sexo si se ingresa un dato incorrecto. Solo funciona el break si el dato es correcto y recien pasa a la otra persona.
     while True:
-        sexo = input("Ingrese el sexo (F para mujer, M para varón): ").upper()
+        sexo = input(f'Ingresá el sexo de la persona {i} (F para mujer y M para varón): ').strip().upper()
         if sexo in ['F', 'M']:
             break
         else:
-            print("Sexo no válido. Por favor ingrese 'F' o 'M'.")
+            print('Sexo no válido. Por favor, ingresa "F" para mujer o "M" para varón.')
 
-    # Actualizar contadores según el sexo
+    
+    # Guardar los datos en la lista
+    personas.append({'edad': edad, 'sexo': sexo})
+    
+    # cuantos mujeres y cuantos hombres:
+    
     if sexo == 'F':
         mujeres += 1
-    elif sexo == 'M':
-        varones += 1
-
-    # Actualizar contadores según la edad
+    else:
+        hombres += 1
+        
     if edad >= 18:
-        mayorEdad += 1
+        mayores += 1
     else:
-        menorEdad += 1
+        menores += 1
 
-# Mostrar resultados
-print("\nResultados finales:")
-print(f"- Cantidad de mujeres: {mujeres}")
-print(f"- Cantidad de varones: {varones}")
-print(f"- Cantidad de mayores de edad: {mayorEdad}")
-print(f"- Cantidad de menores de edad: {menorEdad}")"""
+print('Listado de Personas:')
+print('-'*50)
+for i, persona in enumerate(personas, start=1):
+    print(f"Persona {i}: Edad: {persona['edad']}, Sexo: {'Mujer' if persona['sexo']== 'F' else 'Hombre'}")
+    print('-'*50)
+print(f'Hay {mujeres} mujeres y {hombres} hombres.')
+print(f'{mayores} son mayores y {menores} son menores.')'''
 
+#4. Leer 10 números y mostrar solamente los números positivos, y su sumatoria.'''
+'''numeros = []
+numPositivos = []
 
-#4. Leer 10 números y mostrar solamente los números positivos, y su sumatoria.
-
-"""numeros = [] 
-numerosPositivos = []
-numerosNegativos = []
-sumatoriaPositivos = 0
-sumatoriaNegativos = 0
-
-for i in range(1,11):
-    numero = int(input(f"Ingrese el número {i}: "))
+for i in range (1, 11):
+    numero = int(input(f'Ingresá el número {i}: '))
     numeros.append(numero)
-    if numero > 0:
-        numerosPositivos.append(numero)
-        sumatoriaPositivos += numero
-    elif numero < 0:
-        numerosNegativos.append(numero) 
-        sumatoriaNegativos += numero
-    else:
-        print(f"El número {i} es cero, que no es positivo ni negativo.")
+    
+    numPositivos.append(numero) if numero >= 0 else 0
+ 
+sumPositivos = sum(numPositivos)  
 
-
-print(f"\nTodos los números son: {numeros}")
-print(f"\nLos números positivos son: {numerosPositivos}")
-print(f"\nLos números negativos son: {numerosNegativos}")
-print(f"\nLa sumatoria de los números positivos es: {sumatoriaPositivos}")
-print(f"\nLa sumatoria de los números negativos es: {sumatoriaNegativos}")"""
+print(f'Lista de todos los numeros: ')
+print('*'*30)
+for i, numero in enumerate(numeros):
+    print(f'Número {i+1}: {numero}.')
+print('*'*30)
+print(f'Los números positivos son {numPositivos} y suman en total {sumPositivos}.')
+print('*'*30)'''
 
 #5. Leer 15 números negativos y convertirlos a positivos e imprimir dichos números.
 
-numerosNegativos = []
+'''numerosNegativos = []
 
 for i in range(1,16):
     numero = int(input(f"Ingrese el número {i}: "))
@@ -140,4 +136,4 @@ for i in range(1,16):
 valoresAbsolutos = [abs(num) for num in numerosNegativos]
 # abs muestra el valor absoluto sin los signos.
 
-print(f"\nLos valores absolutos de estos números son: {valoresAbsolutos}")
+print(f"\nLos valores absolutos de estos números son: {valoresAbsolutos}")'''
