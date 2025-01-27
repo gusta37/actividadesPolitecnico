@@ -98,6 +98,37 @@ print(f'Los números mayores a 100 son: {mayorCienList} y son {mayorCien} númer
 print(f'Los números menores a 100 son: {menorCienList} y son {menorCien} números.')
 print(f'El número Máximo es {maximo} y el número mínimo es {minimo}.')'''
 
+#version sin contadores: 
+#2. Leer 10 números y obtener la cantidad de mayores y la cantidad de menores a 100 y 
+#cuál es el número máximo y cuál es el número mínimo.
+numeros = []
+mayoresCien = []
+
+for i in range (1, 5):
+
+    while True:
+        try:
+            numero = int(input(f'Ingresa el número {i}: '))
+            numeros.append(numero)
+            break
+        except ValueError:
+            print('Ingresaste un valor que no es válido, debe ser un número. Intenta de nuevo.')
+            
+# Filtramos los mayores de 100 de la lista de los numeros:
+mayoresCien = [num for num in numeros if num > 100]
+
+# Derivamos los menores de 100 de la lista d numeros:
+menoresCien = [num for num in numeros if num not in mayoresCien]
+
+# cálculos:
+cantidadMayores = len(mayoresCien)
+cantidadMenores = len(menoresCien)
+numeroMaximo = max(numeros)
+numeroMinimo = min(numeros)
+
+print(f'Ingresaste los números: {", ".join(map(str, numeros))}.')
+print(f'Hay {cantidadMayores} números mayores de 100: {", ".join(map(str, mayoresCien))} y {cantidadMenores} menores: {", ".join(map(str, menoresCien))}.')
+print(f'El número más grande es {numeroMaximo} y es menor es {numeroMinimo}.')
 
 #Ejercicios estructuras repetitivas y estructuras condicionales.
 '''#3. Ingresar las edades y el sexo de 15 personas y determinar cuántas son mujeres, 
