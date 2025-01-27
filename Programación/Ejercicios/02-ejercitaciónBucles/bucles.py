@@ -25,39 +25,38 @@ print(f"\nLa cantidad de números pares es: {contador_pares}")
 print(f"La cantidad de números impares es: {contador_impares}")
 print(f"La sumatoria de los números pares es: {sumatoria_pares}")"""
 
-
-#2. Leer 10 números y obtener la cantidad de mayorEdad y la cantidad de menorEdad a 100, cuál es el número máximo y cuál es el número mínimo.
-
-"""# Inicialización de variables
+#2. Leer 10 números y obtener la cantidad de mayores y la cantidad de menores a 100 y cuál es el número máximo y cuál es el número mínimo.
+'''# Pedir los 10 números:
 numeros = []
-mayorEdad_100 = 0
-menorEdad_100 = 0
-maximo = None
-minimo = None
 
-# Leer los números del usuario
-for i in range(1, 11):  # Cambia 11 por la cantidad de números deseada
-    numero = int(input(f"Ingrese el número {i}: "))
+for i in range(1,11):
+    numero = int(input(f'Ingresá el número {i}: '))
     numeros.append(numero)
 
-    # Contar mayorEdad y menorEdad a 100
+# listas:
+mayorCienList = []
+menorCienList = []
+
+# contadores:
+mayorCien = 0
+menorCien = 0
+
+# Máximo y minimo:
+maximo = max(numeros)
+minimo = min(numeros)
+
+for numero in numeros:
     if numero > 100:
-        mayorEdad_100 += 1
+        mayorCienList.append(numero)
+        mayorCien += 1 
     else:
-        menorEdad_100 += 1
-
-    # Actualizar máximo y mínimo
-    if maximo is None or numero > maximo:
-        maximo = numero
-    if minimo is None or numero < minimo:
-        minimo = numero
-
-# Mostrar los resultados
-print("\nResultados:")
-print(f"- La cantidad de números mayorEdad a 100 es: {mayorEdad_100}")
-print(f"- La cantidad de números menorEdad o iguales a 100 es: {menorEdad_100}")
-print(f"- El número más grande es: {maximo}")
-print(f"- El número más pequeño es: {minimo}")"""
+        menorCienList.append(numero)
+        menorCien += 1
+        
+print(f'Tus números son: {numeros}.')
+print(f'Los números mayores a 100 son: {mayorCienList} y son {mayorCien} números.')
+print(f'Los números menores a 100 son: {menorCienList} y son {menorCien} números.')
+print(f'El número Máximo es {maximo} y el número mínimo es {minimo}.')'''
 
 
 #3. Ingresar las edades y el sexo de 15 personas y determinar cuántas son mujeres, cuántos varones, cuántos mayorEdad de edad y cuántos menorEdad de edad.
