@@ -101,7 +101,7 @@ print(f'El número Máximo es {maximo} y el número mínimo es {minimo}.')'''
 #version sin contadores: 
 #2. Leer 10 números y obtener la cantidad de mayores y la cantidad de menores a 100 y 
 #cuál es el número máximo y cuál es el número mínimo.
-numeros = []
+'''numeros = []
 mayoresCien = []
 
 for i in range (1, 5):
@@ -128,7 +128,7 @@ numeroMinimo = min(numeros)
 
 print(f'Ingresaste los números: {", ".join(map(str, numeros))}.')
 print(f'Hay {cantidadMayores} números mayores de 100: {", ".join(map(str, mayoresCien))} y {cantidadMenores} menores: {", ".join(map(str, menoresCien))}.')
-print(f'El número más grande es {numeroMaximo} y es menor es {numeroMinimo}.')
+print(f'El número más grande es {numeroMaximo} y es menor es {numeroMinimo}.')'''
 
 #Ejercicios estructuras repetitivas y estructuras condicionales.
 '''#3. Ingresar las edades y el sexo de 15 personas y determinar cuántas son mujeres, 
