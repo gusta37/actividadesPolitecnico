@@ -25,7 +25,7 @@ print(f"\nLa cantidad de números pares es: {contador_pares}")
 print(f"La cantidad de números impares es: {contador_impares}")
 print(f"La sumatoria de los números pares es: {sumatoria_pares}")"""
 
-# version sin contadores. solo listas y metodos de python:
+# version sin contadores. solo listas y metodos de python: tambien agrego excepcion que verifique que se esta ingresando solo numeros!
 
 # 1. Realice un programa que lea 4 números y diga cuántos son pares y cuantos impares y devuelva la sumatoria de los pares.
 '''numeros = []
