@@ -25,6 +25,46 @@ print(f"\nLa cantidad de números pares es: {contador_pares}")
 print(f"La cantidad de números impares es: {contador_impares}")
 print(f"La sumatoria de los números pares es: {sumatoria_pares}")"""
 
+# version sin contadores. solo listas y metodos de python:
+
+# 1. Realice un programa que lea 4 números y diga cuántos son pares y cuantos impares y devuelva la sumatoria de los pares.
+'''numeros = []
+paresList = []
+imparesList = []
+
+for i in range (1, 5):
+    
+    while True:
+        try: # genera una excepcion generando un valueError: Uso de un bloque try-except para manejar errores si el usuario no ingresa un número entero.
+            numero = int(input(f'Ingresá el número {i}: '))
+            numeros.append(numero)
+            break
+        except ValueError: # No puedo usar una variable en el mensaje pq si falla ya no queda definida.
+            print(f'Ingresaste un valor no válido y debe ser un número. Intentá de nuevo.')
+            
+# Filtrar los pares
+paresList = [num for num in numeros if num % 2 == 0]
+
+# Derivar los impares a partir de los pares
+imparesList = [num for num in numeros if num not in paresList]
+
+# Cálculos necesarios
+sumPares = sum(paresList)
+cantidadPares = len(paresList)
+sumImpares = sum(imparesList)
+cantidadImpares = len(imparesList)
+            
+print('\nLista completa de números: ')
+print('*'*50)
+for i, numero in enumerate(numeros):
+    print(f'Número {i+1}: {numero}.')
+print('*'*50)
+
+print(f'\nHay {cantidadPares} números pares: {", ".join(map(str, paresList))} y {cantidadImpares} números impares: {", ".join(map(str, imparesList))}')
+# lista de numeros dentro del string: map(str, paresList): Convierte cada número de la lista paresList en una cadena.
+# ", ".join(...): Une todas las cadenas resultantes con una coma y un espacio entre ellas.
+print(f'Todos los pares suman: {sumPares}.')'''    
+
 #2. Leer 10 números y obtener la cantidad de mayores y la cantidad de menores a 100 y cuál es el número máximo y cuál es el número mínimo.
 '''# Pedir los 10 números:
 numeros = []
