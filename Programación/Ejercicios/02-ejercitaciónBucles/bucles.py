@@ -128,7 +128,7 @@ print('*'*30)'''
 #5. Leer 15 números negativos y convertirlos a positivos e imprimir dichos números.
 '''numerosNegativos = []
 
-for i in range (1, 5):
+for i in range (1, 16):
     while True:
         numeroNegativo = int(input(f'Ingresá el número negativo número {i}: '))
         if numeroNegativo <= 0:
