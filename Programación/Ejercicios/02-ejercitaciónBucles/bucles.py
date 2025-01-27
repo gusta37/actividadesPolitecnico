@@ -126,14 +126,28 @@ print(f'Los números positivos son {numPositivos} y suman en total {sumPositivos
 print('*'*30)'''
 
 #5. Leer 15 números negativos y convertirlos a positivos e imprimir dichos números.
-
 '''numerosNegativos = []
 
-for i in range(1,16):
-    numero = int(input(f"Ingrese el número {i}: "))
-    numerosNegativos.append(numero)
+for i in range (1, 5):
+    while True:
+        numeroNegativo = int(input(f'Ingresá el número negativo número {i}: '))
+        if numeroNegativo <= 0:
+            numerosNegativos.append(numeroNegativo)
+            break
+        else:
+            print(f'Ingresaste {numeroNegativo} y no es un número negativo. Intentá de nuevo.\n')
+            
+    # Mostrar el valor absoluto sin el signo menos:
+    volarAbsoluto = [abs(numeroNegativo) for numeroNegativo in numerosNegativos]
+            
+print('\nLista de números negativos ingresados: ')
+print('*'*40)
+for i, numeroNegativo in enumerate(numerosNegativos):
+    print(f'Número {i+1}: {numeroNegativo}.')
+print('*'*40)
 
-valoresAbsolutos = [abs(num) for num in numerosNegativos]
-# abs muestra el valor absoluto sin los signos.
-
-print(f"\nLos valores absolutos de estos números son: {valoresAbsolutos}")'''
+print('\nLista de números convertidos en positivos: ')
+print('*'*40)
+for i, valor in enumerate(volarAbsoluto):
+    print(f'Número {i+1}: {valor}.')
+print('*'*40)'''
