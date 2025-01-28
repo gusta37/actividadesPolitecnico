@@ -9,6 +9,22 @@ if letra1 == letra2:
 else:
     print("\n✖️ Las letras son diferentes")
 """
+
+# Versión avanzada:
+'''letras = []
+for i in range (1, 3):
+    while True:
+        
+        letra = input(f'Ingresá la letra {i}: ').strip().upper()
+        if len(letra) == 1 and letra.isalpha():
+            letras.append(letra)
+            break
+        else:
+            print('Dato incorrecto. Debes ingresar una única letra.')
+        
+print(f'Ingresaste {letras[0]} y {letras[1]}.')    
+print(f'{letras[0]} y {letras[1]} son iguales.' if letras[0] == letras[1] else f'{letras[0]} y {letras[1]} son diferentes.')'''
+    
 #2. Hacer un programa que permita decidir si dos palabras son iguales o diferentes. Mostrar mensaje por pantalla.
 """
 palabra1 = input("\nIngrese la primera palabra: ")
